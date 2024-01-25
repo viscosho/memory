@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './App.scss';
+import Container from 'react-bootstrap/Container';
+import Header from './components/Header';
+import Game from './components/Game';
+import NameForm from './components/NameForm';
+import { storedUsername } from './utils/storedUsername';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [username, setUsername] = useState(storedUsername() || '');
+	const [showGame, setShowGame] = useState(false);
+
+	useEffect(() => {
+		if (storedUsername()) {
+			setShowGame(true);
+		}
+	}, []);
+
+	const handleUsernameChange = (event: { target: { value: React.SetStateAction<string> } }) => {
+		setUsername(event.target.value);
+	};
+
+	const handleSubmit = (event: { preventDefault: () => void }) => {
+		event.preventDefault();
+		localStorage.setItem('userName', username);
+		setShowGame(true);
+	};
+
+	return (
+		<div className='App'>
+			<Container className='pt-4 pb-4'>
+				<Header />
+				{!showGame ? (
+					<NameForm
+						username={username}
+						handleOnChange={handleUsernameChange}
+						handleSubmit={handleSubmit}
+					/>
+				) : (
+					<Game username={username} />
+				)}
+			</Container>
+		</div>
+	);
 }
 
 export default App;

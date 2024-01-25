@@ -1,0 +1,23 @@
+$body-bg: #f3f3f4;
+
+$theme-colors: (
+	'primary': purple,
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+@font-face {
+	font-family: 'DotGothic16';
+	src: local('DotGothic16'), url(./assets/dotgothic16-regular-webfont.woff) format('woff');
+}
+
+body {
+	margin: 0;
+	font-family: 'DotGothic16', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
