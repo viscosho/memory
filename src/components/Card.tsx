@@ -6,6 +6,7 @@ const Card = ({ card, handleClick }: CardType) => {
 	return (
 		<div
 			id={card.image.uuid}
+			data-testid={card.image.uuid}
 			className={`single-card ${card.isFlipped ? 'flipped' : ''} ${
 				card.isMatched ? 'matched' : ''
 			}`}

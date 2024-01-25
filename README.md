@@ -17,7 +17,7 @@ git clone https://github.com/viscosho/memory
 2. Ir al directorio del proyecto:
 
 ```bash
-cd memory_game
+cd memory
 ```
 
 3. Instalar dependencias:
