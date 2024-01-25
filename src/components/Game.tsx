@@ -4,8 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import WinMessage from './WinMessage';
 import ScoreBoards from './ScoreBoards';
-
-import SingleCard from './SingleCard';
+import Card from './Card';
+import { Card as SingleCard } from '../interfaces/card.interface';
 
 type GameUsernameType = {
 	username: string;
@@ -29,10 +29,8 @@ const Game = ({ username }: GameUsernameType) => {
 				<Col>
 					<div className='card-container'>
 						{cards.length &&
-							cards.map((card: any, index: any) => {
-								return (
-									<SingleCard card={card} key={index} handleClick={() => handleCardClick(index)} />
-								);
+							cards.map((card: SingleCard, index: number) => {
+								return <Card card={card} key={index} handleClick={() => handleCardClick(index)} />;
 							})}
 					</div>
 				</Col>

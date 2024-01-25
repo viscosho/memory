@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetchImages } from '../services/api';
 import { shuffleCards } from '../utils/shuffleCards';
 import { Card, Cards, MatchedCards, CardImage } from '../interfaces/card.interface';
@@ -11,10 +11,16 @@ const useCardData = () => {
 	const [showWinMessage, setShowWinMessage] = useState(false);
 	const [cards, setCards] = useState([] as Cards);
 
-	const setCardData = async () => {
+	type ShuffledImagesType = {
+		fields: {
+			image: CardImage;
+		};
+	};
+
+	const setCardData = useCallback(async () => {
 		try {
 			const data = await fetchImages();
-			const cardImages = data.map((entry: { fields: { image: CardImage } }) => entry.fields.image);
+			const cardImages = data.map((entry: ShuffledImagesType) => entry.fields.image);
 			const shuffledImages = shuffleCards(cardImages.concat(cardImages));
 			const initialCards = shuffledImages.map((image: CardImage, index: number) => ({
 				image: image,
@@ -26,11 +32,11 @@ const useCardData = () => {
 		} catch (error) {
 			throw error;
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		setCardData();
-	}, []);
+	}, [setCardData]);
 
 	useEffect(() => {
 		if (cards.length !== 0 && matchedCards.length === cards.length / 2) {

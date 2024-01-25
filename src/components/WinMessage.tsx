@@ -2,11 +2,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-
-type SuccessMessageType = {
-	username: string;
-	onReplay: any;
-};
+import { SuccessMessageType } from '../interfaces/message.interface';
 
 const WinMessage = ({ username, onReplay }: SuccessMessageType) => {
 	return (

@@ -1,6 +1,6 @@
 export type CardImage = {
 	url: string;
-	tags: [];
+	tags: string[];
 	uuid: string;
 	title: string;
 	alt_text: string;
@@ -14,7 +14,7 @@ export type Card = {
 	isMatched: boolean;
 };
 
-export type SingleCardType = {
+export type CardType = {
 	card: Card;
 	handleClick: any;
 };

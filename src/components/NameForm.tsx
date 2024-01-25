@@ -4,12 +4,7 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
-
-type LoginFormType = {
-	username: string;
-	handleSubmit: any;
-	handleOnChange: any;
-};
+import { LoginFormType } from '../interfaces/form.interface';
 
 const NameForm = ({ username, handleSubmit, handleOnChange }: LoginFormType) => {
 	return (

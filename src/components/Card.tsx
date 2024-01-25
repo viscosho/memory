@@ -1,8 +1,8 @@
 import Image from 'react-bootstrap/Image';
 import frontImg from '../assets/card.png';
-import { SingleCardType } from '../interfaces/card.interface';
+import { CardType } from '../interfaces/card.interface';
 
-const SingleCard = ({ card, handleClick }: SingleCardType) => {
+const Card = ({ card, handleClick }: CardType) => {
 	return (
 		<div
 			id={card.image.uuid}
@@ -29,4 +29,4 @@ const SingleCard = ({ card, handleClick }: SingleCardType) => {
 	);
 };
 
-export default SingleCard;
+export default Card;
